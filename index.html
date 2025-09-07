@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epístolas de João Pedro - Devocional Interativo</title>
+<link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Cabeçalho fixo */
+  header {
+    background-color: #1f1f1f;
+    color: #f4a261;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  h2 { color: #f4a261; margin: 15px 20px 10px; text-align: center;}
+  h3 { font-style: italic; }
+
+  select, button {
+    margin: 5px 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    width: calc(100% - 40px);
+    max-width: 400px;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    font-family: Helvetica;
+  }
+
+  button {
+    background-color: #f4a261;
+    color: #121212;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button:hover { background-color: #e76f51; transform: translateY(-2px); }
+
+  /* Layout do capítulo */
+  #layout2 {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    background-color: #121212;
+    padding: 20px;
+  }
+
+  #chapter {
+    flex: 1;
+    padding: 5px;
+    overflow-y: auto;
+    line-height: 1.8;
+    font-size: 24px;
+  }
+
+  .subtitle { font-style: italic; color: #f4a261; margin-bottom: 15px; }
+
+  .verse { margin-bottom: 12px; cursor: pointer; padding: 2px 1px; border-radius: 5px; transition: background 0.3s; }
+  .verse sup { font-weight: 700; margin-right: 1px; opacity: 0.5 }
+  .verse.marked { background-color: #555555; }
+
+  #layout2 button { margin-bottom: 20px; background-color: #2a9d8f; color: #fff; }
+  #layout2 button:hover { background-color: #21867a; }
+
+  /* Copyright no layout1 */
+  #copyright {
+    margin-top: auto;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    padding: 10px 0;
+  }
+
+  @media (max-width: 600px) { select, button { max-width: calc(100% - 40px); } }
+</style>
+</head>
+<body>
+
+<header>Epístolas de João Pedro</header>
+
+<div id="layout1" style="display:flex; flex-direction:column; flex:1;">
+  <div>
+    <h2>Escolher Livro</h2>
+    <select id="bookSelect">
+      <option value="">-- Selecione um livro --</option>
+      <option value="1JP">1 João Pedro</option>
+      <option value="2JP">2 João Pedro</option>
+      <option value="3JP">3 João Pedro</option>
+      <option value="4JP">4 João Pedro</option>
+      <option value="5JP">5 João Pedro</option>
+    </select>
+
+    <h2>Escolher Capítulo</h2>
+    <select id="chapterSelect">
+      <option value="">-- Selecione um capítulo --</option>
+    </select>
+
+    <button onclick="showChapter()">Abrir Capítulo</button>
+  </div>
+
+  <div id="copyright">© 2025 João Pedro Sousa Barros. Todos os direitos reservados. <br>"Examinai tudo. Retende o bem" — 1 Tessalonicenses 5:21</br>
+  </div>
+</div>
+
+<div id="layout2">
+  <button onclick="goBack()">← Voltar à Casa</button>
+  <div id="chapter"></div>
+</div>
+
+<script>
+// Todos os capítulos começam vazios
+const chapters = {
+  "1JP": { 1: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 1</h2>
+<h3>Confissão de um servo indigno. Escrito aproximadamente em 19/07/2025</h3>
+<p>
+<span class="verse"><sup>1</sup> Eu, João Pedro, servo indigno do Senhor, venho diante de vocês e diante do Altíssimo para confessar minha realidade: sou um homem de pecados e fraquezas, incapaz de olhar para o trono da graça com merecimento.</span>
+<span class="verse"><sup>2</sup> Reconheço, com pesar e sinceridade, que muitas vezes pronunciei o santo nome de Jesus em preces e cânticos, mas meu coração estava distante dEle, entregue às preocupações, às dúvidas e às paixões do mundo.</span>
+<span class="verse"><sup>3</sup> O servo indigno reconhece que, embora possa confessar com a boca, o coração pode permanecer escondido; que palavras podem ser ditas, mas os sentimentos podem estar longe da verdade. Vivo nesse contraste: entre a palavra que sai da boca e o espírito que não se rende.</span>
+<span class="verse"><sup>4</sup> Mesmo desejando seguir o caminho da santidade, sou fraco e caio; mesmo buscando a luz, sou envolto por sombras; mesmo clamando por misericórdia, sinto a dor da minha própria resistência.</span>
+<span class="verse"><sup>5</sup> Essa luta entre palavras e sentimentos faz de mim um servo indigno, consciente de minhas falhas e imperfeições.</span>
+<span class="verse"><sup>6</sup> Contudo, encontro esperança na graça imerecida do Senhor.</span>
+<span class="verse"><sup>7</sup> O Senhor não rejeita os que se voltam para Ele com arrependimento genuíno, mesmo que leve tempo para sentir o fogo da transformação.</span>
+<span class="verse"><sup>8</sup> Busco esse fogo de mudança, mesmo quando o medo e dúvida tentam apagar a chama no meu peito.</span>
+<span class="verse"><sup>9</sup> Confesso diante de vocês e de Deus, que minha caminhada ainda é marcada por quedas, pecados ocultos e uma distância que só o Espírito Santo pode curar.</span>
+<span class="verse"><sup>10</sup> Mesmo na minha indignidade, creio na promessa de perdão, no poder da redenção e na paciência infinita do Pai.</span>
+<span class="verse"><sup>11</sup> Não sou justo nem perfeito; sou um servo indigno que clama por transformação, renovação e santificação.</span>
+<span class="verse"><sup>12</sup> Que estas palavras sirvam de consolo e encorajamento para aqueles que, como eu, tropeçam no caminho.</span>
+<span class="verse"><sup>13</sup> Peço ao Senhor que toque corações endurecidos, ilumine os que vivem na escuridão do pecado e restaure os que se sentem distantes do Seu amor.</span>
+<span class="verse"><sup>14</sup> Escrevo esta carta na quietude da madrugada, em momentos de reflexão profunda, consciente da necessidade de buscar a Deus com mais fervor.</span>
+<span class="verse"><sup>15</sup> Que o Senhor, em sua infinita misericórdia, me torne digno, não pelos meus méritos, mas pelo Seu amor e sacrifício.</span>
+<span class="verse"><sup>16</sup> A Ti, Senhor, entrego meu ser, minha alma e meu coração. Que eu seja servo fiel, ainda que indigno. Amém.</span>
+</p></div>`, 2: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 2</h2>
+<h3>Ai de mim se não me arrepender!</h3>
+<p>
+<span class="verse"><sup>1</sup> Ai de mim se não me arrepender! Pois o tempo passa veloz como o vento, e a alma que não se humilha diante do Senhor será arrastada pelas tempestades de Sua justiça.</span>
+<span class="verse"><sup>2</sup> Não posso mais esconder meus pecados, nem fingir santidade. O olhar de Deus penetra onde nenhum olhar humano alcança.</span>
+<span class="verse"><sup>3</sup> Minhas ações não me justificam. Minhas palavras não me salvam. Só um coração contrito pode tocar o coração do Altíssimo.</span>
+<span class="verse"><sup>4</sup> Para que esperar para se arrepender, se não sei o que o amanhã me reserva? O tempo da graça é agora, e o chamado à mudança soa como trombeta do céu.</span>
+<span class="verse"><sup>5</sup> Cada dia sem arrependimento é como uma pedra lançada contra a minha própria alma.</span>
+<span class="verse"><sup>6</sup> Ó Senhor, não permita que meu coração se endureça diante da Tua voz! Que a Tua misericórdia me quebre, para que eu possa ser reconstruído.</span>
+<span class="verse"><sup>7</sup> Pois sei que arrependimento não é só lágrimas, mas transformação; não é apenas sentimento, mas decisão firme.</span>
+<span class="verse"><sup>8</sup> Clamo como publicano no templo: &quot;Tem misericórdia de mim, pecador!&quot; Pois reconheço minha indignidade diante de Ti.</span>
+<span class="verse"><sup>9</sup> Meu orgulho foi minha prisão, e minha resistência, meu castigo.</span>
+<span class="verse"><sup>10</sup> Mas o Senhor chama com amor eterno; e, mesmo na minha rebeldia, Ele não me abandona.</span>
+<span class="verse"><sup>11</sup> Bendita é a dor que leva ao arrependimento, e bendito é o quebrantamento que precede a cura.</span>
+<span class="verse"><sup>12</sup> Não quero viver mais nas sombras. Desejo caminhar na luz, mesmo que isso exponha minhas feridas.</span>
+<span class="verse"><sup>13</sup> Que o arrependimento seja meu refúgio, e que o perdão seja meu alimento diário.</span>
+<span class="verse"><sup>14</sup> Ai de mim, se não me arrepender! Pois a graça é oferecida, mas não imposta. E o tempo da decisão é agora.</span>
+</p>
+<h3>Não rejeitar a oportunidade de se arrepender</h3>
+<p>
+<span class="verse"><sup>15</sup> Deus não se alegra com a destruição do pecador. Seu desejo é que todos se arrependam e vivam.</span>
+<span class="verse"><sup>16</sup> Ele estende suas mãos dia e noite, chamando os cansados, os feridos, os orgulhosos e os esquecidos.</span>
+<span class="verse"><sup>17</sup> Não há pecado que sua graça não possa perdoar, nem queda tão profunda que sua mão não alcance.</span>
+<span class="verse"><sup>18</sup> Portanto, não endureçam o coração. Pois Deus quer restaurar, renovar e redimir todos os que se voltam para Ele com sinceridade.</span>
+</p></div>`, 3: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 3</h2>
+<h3>A promessa da vinda do Senhor</h3>
+<p>
+<span class="verse"><sup>1</sup> A promessa do Senhor continua firme: Ele voltará em poder e grande glória, como Rei eterno de toda criação.</span>
+<span class="verse"><sup>2</sup> Muitos duvidam, outros zombam; mas, quem crê, vive esperando o encontro com o Noivo.</span>
+<span class="verse"><sup>3</sup> Sua vinda não será anunciada por homens, mas revelada pelo próprio céu, de maneira clara e impressionante.</span>
+<span class="verse"><sup>4</sup> Nenhuma muralha poderá esconder Aquele que vem; e nenhuma alma poderá escapar da Sua presença.</span>
+<span class="verse"><sup>5</sup> Aquele dia será dia de júbilo para os fiéis, mas de surpresa e espanto para os que viveram como se Deus não existisse.</span>
+<span class="verse"><sup>6</sup> Quem anda na luz não teme o retorno do Senhor, porque sua esperança está firme na verdade.</span>
+<span class="verse"><sup>7</sup> Mas ai daqueles que rejeitam a misericórdia! Para estes, resta apenas a expectação do juízo.</span>
+<span class="verse"><sup>8</sup> O Senhor não esquece suas promessas: Ele é longânimo, esperando que mais pessoas se rendam ao Seu amor.</span>
+<span class="verse"><sup>9</sup> Como sentinelas na madrugada, devemos vigiar, esperando o primeiro raio de Sua glória.</span>
+<span class="verse"><sup>10</sup> Mantenham suas vestes limpas, e seus corações prontos, porque ninguém sabe o dia nem a hora em que Ele voltará.</span>
+<span class="verse"><sup>11</sup> Não se deixem distrair pelas coisas deste mundo; o dia do Senhor virá de surpresa para os despreparados.</span>
+<span class="verse"><sup>12</sup> Fortaleçam os fracos, animem os que estão cansados, e proclamem em alta voz: &quot;Eis que o Rei vem!&quot;</span>
+<span class="verse"><sup>13</sup> Que cada passo seja guiado pela eternidade, e cada palavra cheia de esperança na redenção.</span>
+<span class="verse"><sup>14</sup> O céu espera o momento da ordem final, enquanto a terra inteira anseia pela manifestação do Filho de Deus.</span>
+<span class="verse"><sup>15</sup> Vem, Senhor Jesus! Maranata! Esse é o clamor dos que te amam e aguardam Tua vinda com reverência.</span>
+</p>
+<h3>O tempo da graça</h3>
+<p>
+<span class="verse"><sup>16</sup> Hoje é o tempo da graça, o sopro de misericórdia que Deus ainda derrama sobre a terra.</span>
+<span class="verse"><sup>17</sup> Não se enganem: o convite do céu ainda está aberto, mas não para sempre. Aproveitem enquanto o coração ainda pode responder.</span>
+<span class="verse"><sup>18</sup> Muitos pensam que o amanhã lhes pertence; mas o amanhã é mistério, e o hoje é presente.</span>
+<span class="verse"><sup>19</sup> A porta da graça ainda está aberta. Entrem com humildade, porque em breve ela se fechará, e o tempo do juízo chegará.</span>
+</p></div>`, 4: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 4</h2>
+<h3>A amizade cristã</h3>
+<p>
+<span class="verse"><sup>1</sup> Felizes aqueles que têm por amigos os que amam ao Senhor de todo o coração, pois caminharão em companhia fiel e serão fortalecidos na fé.</span>
+<span class="verse"><sup>2</sup> O justo se alegra em andar com pessoas piedosas, porque delas vêm conselho santo e ânimo nas dificuldades.</span>
+<span class="verse"><sup>3</sup> Amizades baseadas no temor do Senhor são como raízes profundas: resistem aos ventos e produzem frutos bons.</span>
+<span class="verse"><sup>4</sup> Mas laços com os ímpios são como armadilhas escondidas, que prendem o coração e desviam os passos do caminho certo.</span>
+<span class="verse"><sup>5</sup> A alma se nutre de comunhão santa, e o espírito se fortalece entre aqueles que invocam juntos o nome do Senhor.</span>
+<span class="verse"><sup>6</sup> Fuja da amizade dos escarnecedores, mas aproxime-se de quem ora contigo e te exorta com bondade.</span>
+<span class="verse"><sup>7</sup> Que seus amigos ajudem você a buscar as coisas do alto, onde Cristo está à direita de Deus.</span>
+</p>
+<h3>O perdão</h3>
+<p>
+<span class="verse"><sup>8</sup> Feliz é aquele que perdoa, pois se liberta da prisão do rancor e descansa no colo da misericórdia.</span>
+<span class="verse"><sup>9</sup> Guardar mágoa é como carregar veneno dentro de si, mas o perdão é como fonte de água viva que limpa o coração.</span>
+<span class="verse"><sup>10</sup> Perdoem uns aos outros, assim como Deus os perdoou em Cristo.</span>
+<span class="verse"><sup>11</sup> Quem escolhe perdoar, mesmo ferido, demonstra que o amor de Deus habita nele com poder.</span>
+<span class="verse"><sup>12</sup> Não repitam a ofensa no coração; coloquem diante da cruz toda dor e toda lembrança amarga.</span>
+<span class="verse"><sup>13</sup> Como Jesus disse: &quot;Se não perdoarem aos outros, o Pai também não perdoará vocês.&quot;</span>
+<span class="verse"><sup>14</sup> Quem ama de verdade também perdoa, porque o amor cobre multidão de pecados.</span>
+</p>
+<h3>Cuidado com as filosofias humanas</h3>
+<p>
+<span class="verse"><sup>15</sup> Tenham cuidados com palavras persuasivas que afastam da simplicidade do Evangelho.</span>
+<span class="verse"><sup>16</sup> Muitos se consideram sábios segundo o mundo, mas não conhecem a sabedoria que vem do Alto.</span>
+<span class="verse"><sup>17</sup> Fujam das ideias humanas que desviam da fé; antes, mantenham-se fiéis ao ensino de apóstolos e de profetas.</span>
+<span class="verse"><sup>18</sup> Não deixem ninguém enganá-los com discursos vazios; ao contrário, cresçam na graça e no conhecimento de nosso Senhor Jesus Cristo.</span>
+</p></div>`, 5: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 5</h2>
+<h3>Evitar debates que não edificam</h3>
+<p>
+<span class="verse"><sup>1</sup> Fuja das discussões sem valor, porque elas só trazem divisão e destruição espiritual.</span>
+<span class="verse"><sup>2</sup> Lembrem-se do que a Escritura ensina: &quot;O servo do Senhor não deve brigar, mas ser manso, paciente e sempre pronto para ensinar.&quot;</span>
+<span class="verse"><sup>3</sup> Debates inúteis só alimentam o orgulho e o ego; já a sabedoria que vem de Deus produz paz e humildade.</span>
+<span class="verse"><sup>4</sup> Não entrem em discussões sobre palavras, porque isso só serve para confundir e atrapalhar quem escuta.</span>
+<span class="verse"><sup>5</sup> A pessoa insensata fala sem pensar, mas o sábio sabe se calar e guarda o coração.</span>
+<span class="verse"><sup>6</sup> Se alguém insiste em brigas, aconselhe uma ou duas vezes. Mas, se não mudar, afaste-se para não ser contaminado.</span>
+<span class="verse"><sup>7</sup> A verdadeira doutrina não se confirma com gritos, mas com uma vida transformada e palavras cheias de graça.</span>
+<span class="verse"><sup>8</sup> Evite aqueles que gastam tempo com disputas sobre genealogias, tradições humanas ou filosofias vazias.</span>
+<span class="verse"><sup>9</sup> A verdadeira piedade está em amar, crer, obedecer e guardar a unidade do Espírito.</span>
+<span class="verse"><sup>10</sup> Se um irmão falar contra você de uma forma dura, responda com mansidão e ore por ele.</span>
+<span class="verse"><sup>11</sup> Muitos se perdem porque querem sempre ter razão, mas se esquecem de que a caridade edifica mais que o argumento.</span>
+<span class="verse"><sup>12</sup> Que seu objetivo seja edificar, não vencer; reconciliar, não humilhar.</span>
+<span class="verse"><sup>13</sup> Lembre-se: até o Senhor Jesus, diante dos que o acusavam, muitas vezes escolheu o silêncio.</span>
+<span class="verse"><sup>14</sup> O silêncio sábio é mais poderoso do que a palavra precipitada.</span>
+<span class="verse"><sup>15</sup> A única discussão proveitosa é aquela que leva à verdade e produz arrependimento.</span>
+<span class="verse"><sup>16</sup> Não deixe que o zelo te torne áspero, nem que a firmeza tire de você a mansidão.</span>
+<span class="verse"><sup>17</sup> As Escrituras dizem: &quot;A sabedoria que vem do alto é antes de tudo, pura, depois pacífica, moderada, humilde, cheia de misericórdia.&quot;</span>
+<span class="verse"><sup>18</sup> Afaste-se dos que gostam de provocar, porque o espírito de contenda não vem de Deus.</span>
+<span class="verse"><sup>19</sup> Busque a paz com todos, e procure viver de forma correta diante do Senhor e dos homens.</span>
+</p>
+<h3>Pedido de oração</h3>
+<p>
+<span class="verse"><sup>20</sup> Louvado seja Deus, nosso Pai, e louvado seja o nome de nosso Senhor Jesus Cristo.</span>
+<span class="verse"><sup>21</sup> Pedimos que Ele fortaleça os seus corações na fé e no amor, e que sempre os guie em sua verdade.</span>
+<span class="verse"><sup>22</sup> Pedimos também que o Senhor lhes conceda paz e perseverança no meio das dificuldades.</span>
+<span class="verse"><sup>23</sup> Que a graça do Senhor esteja com todos vocês, para que permaneçam firmes até o fim.</span>
+<span class="verse"><sup>24</sup> Oramos para que sejam fortalecidos no espírito, na mente e coração, vivendo sempre segundo a vontade do Pai.</span>
+<span class="verse"><sup>25</sup> Aquele que invocar o nome do Senhor com sinceridade será salvo e terá vida eterna. Amém.</span>
+</p></div>` },
+  "2JP": { 1: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 1</h2>
+<h3>A graça não invalida a lei de Deus</h3>
+<p>
+<span class="verse"><sup>1</sup> João Pedro, servo indigno do Senhor Jesus Cristo, escrevo a vocês para que sejam avisados.</span>
+<span class="verse"><sup>2</sup> Que a graça e a paz de Deus sejam abundantes em suas vidas, fortalecendo a fé que já possuem.</span>
+<span class="verse"><sup>3</sup> É importante compreender que a graça que recebemos não anula a Lei de Deus, mas nos dá forças para obedecê-la de coração.</span>
+<span class="verse"><sup>4</sup> A fé verdadeira se manifesta em atitudes, e não apenas em palavras; portanto, vivam segundo os princípios do Senhor.</span>
+<span class="verse"><sup>5</sup> Guardem a integridade em todas as coisas, evitando a hipocrisia e o desvio do caminho reto.</span>
+<span class="verse"><sup>6</sup> Cresçam no conhecimento de Deus e na prática do amor, que é a essência de Sua Lei.</span>
+<span class="verse"><sup>7</sup> Fortaleçam-se em cada provação, sabendo que Deus usa essas experiências para aperfeiçoar nosso caráter.</span>
+<span class="verse"><sup>8</sup> Evitem discussões inúteis sobre a Lei, mas entendam o que ela realmente ensina e aplica em suas vidas.</span>
+<span class="verse"><sup>9</sup> A Lei de Deus é justa e boa; rejeitá-la ou interpretá-la mal é desviar-se do caminho da vida.</span>
+<span class="verse"><sup>10</sup> Recordem-se das promessas do Senhor, e deixem que elas guiem suas ações e decisões diariamente.</span>
+<span class="verse"><sup>11</sup> Sejam obedientes em tudo, não por obrigação, mas por amor a Deus que nos salvou pela graça.</span>
+<span class="verse"><sup>12</sup> A obediência verdadeira não diminui a graça; ao contrário, a confirma e a torna eficaz em nossas vidas.</span>
+<span class="verse"><sup>13</sup> Evitem a vaidade e o orgulho, pois quem se humilha diante de Deus será exaltado segundo Sua vontade.</span>
+<span class="verse"><sup>14</sup> Amem uns aos outros sinceramente, demonstrando que a fé se traduz em atos concretos.</span>
+<span class="verse"><sup>15</sup> Guardem o coração de todo engano e doutrina errada que tenta confundir os fiéis.</span>
+<span class="verse"><sup>16</sup> Não se deixem levar por filosofias humanas que contradizem a Palavra de Deus.</span>
+<span class="verse"><sup>17</sup> Vivam com discernimento, sabendo que cada escolha deve refletir o temor de Deus.</span>
+<span class="verse"><sup>18</sup> Fortaleçam os fracos na fé, encorajando-os a permanecer firmes na obediência.</span>
+<span class="verse"><sup>19</sup> Recordem que o Senhor é paciente, mas também justo; cada um prestará contas de suas ações.</span>
+<span class="verse"><sup>20</sup> Por isso, sejam vigilantes, mantendo a integridade e o amor em tudo o que fizerem.</span>
+<span class="verse"><sup>21</sup> A graça de Deus nos chama a obedecer, e a obediência não invalida Sua misericórdia; pelo contrário, a manifesta plenamente.</span>
+</p></div>`, 2: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 2</h2>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, lembrem-se de que a obediência à Lei não é uma carga, mas um reflexo do amor que Deus nos deu.</span>
+<span class="verse"><sup>2</sup> O sábado, agora visto à luz da Nova Aliança, é um convite à comunhão com Deus, não um fardo pesado.</span>
+<span class="verse"><sup>3</sup> Ele nos convida a descansar, refletir e nos aproximar de Seu coração, lembrando que a misericórdia dEle nos sustenta.</span>
+<span class="verse"><sup>4</sup> Guardar este tempo é um ato de fé e gratidão, não apenas de obrigação.</span>
+<span class="verse"><sup>5</sup> A Lei continua sendo um guia, mas a graça nos permite cumpri-la de forma plena e voluntária.</span>
+<span class="verse"><sup>6</sup> Não se prendam à letra que mata, mas à prática que dá vida e fortalece a fé.</span>
+<span class="verse"><sup>7</sup> O sábado é um sinal de esperança e renovação, que nos lembra do descanso que teremos eternamente em Cristo.</span>
+<span class="verse"><sup>8</sup> Viver assim é demonstrar que entendemos a verdadeira intenção da Lei, guiados pelo amor e pela misericórdia de Deus.</span>
+<span class="verse"><sup>9</sup> Que cada encontro com Ele seja motivo de alegria, e não de rigidez ou julgamento.</span>
+</p>
+<h3>A Palavra não é só lida, mas vivida</h3>
+<p>
+<span class="verse"><sup>10</sup> Não basta apenas conhecer a Lei ou ouvir a Palavra; é preciso praticá-la com sinceridade e dedicação.</span>
+<span class="verse"><sup>11</sup> Guardem o coração e os pensamentos, deixando que a Palavra transforme suas atitudes.</span>
+<span class="verse"><sup>12</sup> Que o amor e a compaixão guiem suas relações, refletindo a presença de Deus em cada ação.</span>
+<span class="verse"><sup>13</sup> A misericórdia que recebemos deve ser compartilhada, ajudando a curar feridas e aproximar corações.</span>
+<span class="verse"><sup>14</sup> Assim, viver a Palavra se torna natural, tornando nossa fé visível em gestos de bondade e cuidado.</span>
+</p></div>`, 3: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 3</h2>
+<h3>O Evangelho aceita todos, menos tudo</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, atenção: o Evangelho é para todos, mas não tolera tudo. Ele é um caminho de vida, não uma licença para pecar.</span>
+<span class="verse"><sup>2</sup> Cada um que se aproxima de Deus deve entender que a fé exige transformação real, e não apenas aparência.</span>
+<span class="verse"><sup>3</sup> Muitos se deixam levar pelas paixões e desejos que destroem a alma; essas são as obras da carne.</span>
+<span class="verse"><sup>4</sup> Egoísmo, ódio, inveja, orgulho e vaidade — tudo isso destrói a comunhão com Deus e afasta do caminho da salvação.</span>
+<span class="verse"><sup>5</sup> Mentiras, cobiça e malícia corroem o coração, tornando o perdão de Deus inútil se não houver arrependimento.</span>
+<span class="verse"><sup>6</sup> Ignorância e desculpas não escondem o pecado; ele sempre retorna para quem o pratica.</span>
+<span class="verse"><sup>7</sup> Quem insiste em viver segundo a própria vontade, rejeitando a Lei e a graça, prepara o terreno para destruição espiritual.</span>
+<span class="verse"><sup>8</sup> Pecar deliberadamente é brincar com fogo: há risco de afastar-se da misericórdia e receber condenação.</span>
+<span class="verse"><sup>9</sup> Rejeitar a voz do Espírito Santo é um caminho perigoso; essa obstinação pode resultar em um pecado imperdoável, que separa da presença de Deus.</span>
+</p>
+<h3>Doxologia e bênção final</h3>
+<p>
+<span class="verse"><sup>10</sup> Mas há esperança para os que se arrependem e buscam viver em obediência; o Senhor é paciente e deseja restaurar cada coração sincero.</span>
+<span class="verse"><sup>11</sup> Portanto, levantem-se, vigiem e pratiquem a justiça, mostrando que a fé não é apenas crença, mas ação.</span>
+<span class="verse"><sup>12</sup> Que a luz de Cristo brilhe em vocês, para que outros vejam suas obras e glorifiquem a Deus.</span>
+<span class="verse"><sup>13</sup> E a graça, a misericórdia e a paz de Deus sejam abundantes sobre todos que permanecem firmes na verdade, hoje e para sempre. Amém.</span>
+</p></div>` },
+  "3JP": { 1: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 1</h2>
+<h3>Saudações</h3>
+<p>
+<span class="verse"><sup>1</sup> João Pedro, servo indigno de Jesus Cristo, envio saudações a todos que amam a Deus com sinceridade.</span>
+<span class="verse"><sup>2</sup> Que a paz e a graça do Senhor estejam com vocês, fortalecendo sua fé e esperança em cada dia.</span>
+</p>
+<h3>Adorar a Deus em espírito e em verdade não substitui a adoração coletiva</h3>
+<p>
+<span class="verse"><sup>3</sup> Meus irmãos, adorar a Deus individualmente é essencial, mas isso não substitui a comunhão com outros que também O buscam.</span>
+<span class="verse"><sup>4</sup> Reunir-se com os irmãos fortalece a fé, edifica o coração e nos lembra que somos parte do corpo de Cristo.</span>
+<span class="verse"><sup>5</sup> A adoração coletiva é um reflexo do amor que temos por Deus e pelos irmãos, e não apenas um dever religioso.</span>
+<span class="verse"><sup>6</sup> Cada culto compartilhado deve ser feito com reverência, sinceridade e espírito humilde.</span>
+<span class="verse"><sup>7</sup> A Palavra de Deus ensina que não devemos negligenciar os encontros, mas estimular uns aos outros na fé.</span>
+<span class="verse"><sup>8</sup> Que a comunhão e a unidade sejam marcas visíveis de nosso amor a Cristo.</span>
+<span class="verse"><sup>9</sup> Adorar em espírito e verdade é um dom, mas sem compartilhar a vida com outros, nossa fé se torna incompleta.</span>
+<span class="verse"><sup>10</sup> Participem das celebrações, aprendam com os irmãos e sirvam com alegria, sem orgulho ou competição.</span>
+<span class="verse"><sup>11</sup> A música, a oração e a instrução bíblica nos conectam, lembrando que Deus habita onde Seu povo se reúne em Seu nome.</span>
+<span class="verse"><sup>12</sup> O culto coletivo é também uma oportunidade de ajudar os necessitados e confortar os aflitos.</span>
+<span class="verse"><sup>13</sup> Testemunhar juntos fortalece a fé individual e coletiva, mostrando que o Evangelho é vivido, não apenas falado.</span>
+<span class="verse"><sup>14</sup> Nunca subestimem a importância do corpo reunido; ele é instrumento de bênção e transformação.</span>
+<span class="verse"><sup>15</sup> Portanto, adorem a Deus com todo o coração, mas lembrem-se de que a presença dos irmãos é parte essencial de Sua vontade.</span>
+</p></div>`, 2: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 2</h2>
+<h3>Dízimo: Entrega voluntária e coração sincero</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, o dízimo é um ato de gratidão e reconhecimento de que tudo pertence a Deus.</span>
+<span class="verse"><sup>2</sup> Ele deve ser dado de coração sincero, não por obrigação, medo ou pressão social.</span>
+<span class="verse"><sup>3</sup> Quando entregamos com alegria, mostramos confiança na provisão do Senhor e no Seu cuidado.</span>
+<span class="verse"><sup>4</sup> O dízimo é uma prática que fortalece a fé, lembrando que Deus é o dono de todas as coisas.</span>
+<span class="verse"><sup>5</sup> Seja fiel em cada entrega, pois a fidelidade reflete a sinceridade do coração.</span>
+<span class="verse"><sup>6</sup> Não permitam que a rotina transforme o dízimo em um ato mecânico; a motivação é mais importante que a quantidade.</span>
+<span class="verse"><sup>7</sup> Guardem o coração de vaidades: dar apenas para ser visto ou elogiado cancela a bênção da entrega.</span>
+<span class="verse"><sup>8</sup> Pois dar por orgulho ou aparência é perigoso; não agrada a Deus e não traz a verdadeira recompensa.</span>
+<span class="verse"><sup>9</sup> Dê com alegria e liberdade, sabendo que Deus vê o coração e não apenas o gesto.</span>
+<span class="verse"><sup>10</sup> Lembrem-se de que a generosidade sincera abre portas para bênçãos espirituais e para crescimento da fé.</span>
+<span class="verse"><sup>11</sup> O Senhor honra a fidelidade e a entrega voluntária, multiplicando aquilo que é dado com amor.</span>
+<span class="verse"><sup>12</sup> Assim, o dízimo deve ser um reflexo da gratidão, da confiança e da devoção ao Deus que nos sustenta.</span>
+</p>
+<h3>Ofertas que edificam o Reino de Deus</h3>
+<p>
+<span class="verse"><sup>13</sup> Além do dízimo, as ofertas são uma expressão de amor e serviço a Deus.</span>
+<span class="verse"><sup>14</sup> Elas edificam o Reino, fortalecem os necessitados e sustentam a obra do Senhor.</span>
+<span class="verse"><sup>15</sup> Ofereçam com alegria, não com obrigação ou vaidade, lembrando que Deus ama quem dá com generosidade sincera.</span>
+<span class="verse"><sup>16</sup> As ofertas devem ser planejadas, conscientes e fruto de um coração grato.</span>
+<span class="verse"><sup>17</sup> Evitem dar por pressão, aparência ou competição entre irmãos; a motivação do coração é sempre vista por Deus.</span>
+<span class="verse"><sup>18</sup> A generosidade é uma forma de expressar fé viva, não apenas um gesto externo.</span>
+<span class="verse"><sup>19</sup> Quando ofertamos com amor, estamos investindo no crescimento do Reino e na transformação de vidas.</span>
+<span class="verse"><sup>20</sup> O Senhor recompensa a fidelidade e a sinceridade, usando cada oferta para realizar Seus propósitos.</span>
+</p></div>`, 3: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 3</h2>
+<h3>Como deve ser feito antes de entrar no culto</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, antes de participar do culto, preparem o coração com sinceridade e arrependimento.</span>
+<span class="verse"><sup>2</sup> Confessem seus pecados a Deus, lembrando que Ele vê tudo e conhece cada intenção.</span>
+<span class="verse"><sup>3</sup> Purifiquem a mente e o espírito, deixando de lado distrações e preocupações do dia a dia.</span>
+<span class="verse"><sup>4</sup> Não entrem com orgulho ou vaidade, mas com humildade e reverência.</span>
+<span class="verse"><sup>5</sup> Examine-se antes de entrar, garantindo que o amor e a fé estejam presentes em suas atitudes.</span>
+<span class="verse"><sup>6</sup> Se houver ofensa ou rancor, busquem reconciliar-se, pois a comunhão com Deus exige paz.</span>
+<span class="verse"><sup>7</sup> A oração pessoal deve preceder o culto, abrindo espaço para ouvir a voz do Senhor.</span>
+<span class="verse"><sup>8</sup> A adoração coletiva é mais frutífera quando cada coração está alinhado com a verdade e a graça de Deus.</span>
+<span class="verse"><sup>9</sup> Lembrem-se de que a presença de Deus é real; Ele habita onde Seu povo se reúne em espírito e verdade.</span>
+<span class="verse"><sup>10</sup> Preparem o corpo e o espírito: jejum, oração e meditação fortalecem a mente e o coração.</span>
+<span class="verse"><sup>11</sup> Evitem distrações externas e internas; concentrem-se em adorar e glorificar o Senhor.</span>
+<span class="verse"><sup>12</sup> O culto não é uma formalidade, mas uma oportunidade de comunhão com Deus e com os irmãos.</span>
+<span class="verse"><sup>13</sup> Cada gesto, cada palavra e cada atitude deve refletir o temor e o amor ao Senhor.</span>
+<span class="verse"><sup>14</sup> Entrem com alegria e gratidão, sabendo que Deus se agrada daqueles que O buscam sinceramente.</span>
+</p>
+<h3>Como realmente a Ceia deve ser ministrada</h3>
+<p>
+<span class="verse"><sup>15</sup> O pão simboliza o corpo de Cristo, e o cálice simboliza Seu sangue derramado por nós; ambos devem ser recebidos com reverência.</span>
+<span class="verse"><sup>16</sup> Tomar a Ceia com irreverência, sem arrependimento ou em pecado, é perigoso e contraria a vontade de Deus.</span>
+<span class="verse"><sup>17</sup> Quem participa da Ceia sem coração sincero, sem fé e arrependimento, não pode experimentar a comunhão com Cristo.</span>
+<span class="verse"><sup>18</sup> Examine-se, portanto, antes de aproximar-se da mesa do Senhor, para que não seja julgado.</span>
+<span class="verse"><sup>19</sup> A Ceia é um memorial da morte e ressurreição de Jesus; respeitem este momento, lembrando que é santo e sério.</span>
+<span class="verse"><sup>20</sup> Recebam com gratidão, lembrando que Cristo deu a vida por todos, e que cada participante é chamado a viver em santidade.</span>
+<span class="verse"><sup>21</sup> A Ceia deve fortalecer a fé, renovar o compromisso com Deus e edificar a comunidade.</span>
+<span class="verse"><sup>22</sup> Cada um deve participar conscientemente, refletindo sobre suas atitudes e buscando retidão diante de Deus.</span>
+<span class="verse"><sup>23</sup> Assim, a ordenança da Ceia não é apenas simbólica, mas um ato de fé, arrependimento e comunhão com o Salvador.</span>
+</p></div>`, 4: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 4</h2>
+<h3>Acerca dos hinos que devem ser ministrados</h3>
+<p>
+<span class="verse"><sup>1</sup> A música na igreja não é apenas som, mas um meio de conduzir corações a Deus e fortalecer a fé de cada irmão e irmã, lembrando que cada nota e letra deve apontar para Cristo e não para nós mesmos.</span>
+<span class="verse"><sup>2</sup> Nem todo hino serve; é preciso discernir o que edifica, o que inspira júbilo, adoração, gratidão no ofertório ou reverência durante a Ceia do Senhor.</span>
+<span class="verse"><sup>3</sup> Hinos de júbilo celebram as vitórias do Senhor e lembram que cada conquista espiritual é fruto da graça de Deus, trazendo alegria e renovação à congregação.</span>
+<span class="verse"><sup>4</sup> Hinos de adoração conduzem o coração a reconhecer a grandeza de Deus, permitindo que cada pessoa entregue sua vida e rendição sincera ao Senhor.</span>
+<span class="verse"><sup>5</sup> Hinos no ofertório lembram que a generosidade é uma forma de adorar, e hinos durante a Ceia conectam nossa adoração à entrega de Jesus na cruz e ao compromisso de viver segundo Seus ensinamentos.</span>
+<span class="verse"><sup>6</sup> Para servir no ministério de louvor, é necessário humildade, dedicação e vida santa; quem age por vaidade ou para impressionar outros falha em cumprir a verdadeira adoração, que é sempre para Deus.</span>
+<span class="verse"><sup>7</sup> Evitem tocar ou cantar para impressionar; a música deve edificar, unir e preparar corações, não distrair ou alimentar orgulho pessoal.</span>
+<span class="verse"><sup>8</sup> Cada hino e cada gesto deve refletir integridade, reverência e amor genuíno a Deus, lembrando que o ministério de louvor é uma expressão de serviço e não de prestígio.</span>
+<span class="verse"><sup>9</sup> Que cada nota e palavra cantada seja feita com sinceridade, amor ao próximo e desejo de glorificar a Deus acima de tudo.</span>
+<span class="verse"><sup>10</sup> A adoração é um ato de entrega total, e aqueles que a ministram devem sempre lembrar que a motivação é a glória de Deus, não elogios humanos.</span>
+<span class="verse"><sup>11</sup> Evitem qualquer motivação egoísta; Deus merece honra genuína, e cada hino deve levar à edificação do corpo e ao crescimento da fé.</span>
+<span class="verse"><sup>12</sup> Cada hino, cada melodia e cada gesto devem ser reflexos do amor a Deus e da reverência à Sua presença.</span>
+</p>
+<h3>Como realmente a Palavra precisa ser pregada</h3>
+<p>
+<span class="verse"><sup>13</sup> A Palavra deve ser pregada fielmente, sem distorções, com coragem para confrontar o pecado, ensinar a verdade e inspirar transformação de vidas, lembrando que o objetivo é restaurar corações e guiar a congregação para a santidade.</span>
+<span class="verse"><sup>14</sup> Cada mensagem precisa apontar para Cristo, não para o pregador, mostrando que a fé não é teoria, mas prática que muda vidas.</span>
+<span class="verse"><sup>15</sup> Evitem filosofias humanas ou interpretações que desviem o foco do Evangelho; a verdade de Deus não precisa ser adaptada para agradar ou impressionar.</span>
+<span class="verse"><sup>16</sup> O centro da pregação é Cristo, e apenas aqueles que são chamados por Deus podem ministrar a Palavra; ser pregador exige humildade, compromisso e sensibilidade ao Espírito, sabendo que falar de Deus é responsabilidade séria.</span>
+<span class="verse"><sup>17</sup> Preguem de forma clara e simples, mas profunda, com convicção e amor, para que todos compreendam, apliquem e sejam transformados pelo Evangelho.</span>
+<span class="verse"><sup>18</sup> A pregação deve confrontar, confortar e instruir, sempre guiada pelo Espírito, para que o poder da Palavra atue na vida de cada ouvinte, promovendo arrependimento e crescimento espiritual.</span>
+<span class="verse"><sup>19</sup> Lembrem-se: o objetivo não é impressionar ou ganhar aplausos, mas transformar corações, guiando-os à comunhão com Deus e à mudança real de vida.</span>
+<span class="verse"><sup>20</sup> São estas as ordenanças que eu lhes transmiti: que cada hino, cada palavra e cada gesto seja feito para a glória de Deus e a edificação do corpo de Cristo.</span>
+<span class="verse"><sup>21</sup> Que a graça, a paz e a sabedoria do Senhor sejam abundantes sobre todos que perseveram em viver segundo estas instruções, hoje e sempre. Amém.</span>
+</p></div>` },
+  "4JP": { 1: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 1</h2>
+<h3>Saudações</h3>
+<p>
+<span class="verse"><sup>1</sup> João Pedro, servo indigno de Jesus Cristo, envia saudações a todos os irmãos que permanecem firmes na fé, lembrando que a graça e a paz do Senhor devem ser abundantes em cada vida.</span>
+<span class="verse"><sup>2</sup> Que a presença do Senhor fortaleça seus corações e lhes conceda sabedoria, fé e discernimento para compreender os sinais dos tempos.</span>
+</p>
+<h3>O último culto se aproxima</h3>
+<p>
+<span class="verse"><sup>3</sup> Meus irmãos, preparem-se: o último culto dentro das igrejas se aproxima, um momento único em que a glória de Deus será manifesta.</span>
+<span class="verse"><sup>4</sup> Cada coração será confrontado: aceitar a mensagem significa preparação e fé, mas rejeitá-la resulta em separação da presença do Senhor e juízo inescapável.</span>
+<span class="verse"><sup>5</sup> Este será o último louvor, um cântico que anuncia a vinda do Rei dos Reis; cada voz que cantar com sinceridade refletirá a esperança do crente e a iminência do cumprimento das promessas divinas.</span>
+<span class="verse"><sup>6</sup> Que cada crente examine sua vida, busque santidade e viva com temor, reconhecendo que o tempo é curto e o fim está próximo.</span>
+<span class="verse"><sup>7</sup> O último pregador proclamará a Palavra com autoridade, exortando todos ao arrependimento, lembrando que o Filho do Homem virá em hora inesperada, e ninguém pode escapar da manifestação da justiça de Deus se rejeitar a verdade.</span>
+<span class="verse"><sup>8</sup> Este último culto será marcado por louvor verdadeiro, oração sincera e proclamação da justiça divina; cada gesto e palavra devem refletir fidelidade a Cristo, e não orgulho ou vaidade humana.</span>
+<span class="verse"><sup>9</sup> Quem ouvir, crer e obedecer estará preparado; cada ação feita com fé será lembrada pelo Senhor no dia do juízo.</span>
+<span class="verse"><sup>10</sup> O último louvor e a última pregação não são apenas símbolos: são oportunidades finais de arrependimento e de aceitar a obra redentora de Cristo.</span>
+<span class="verse"><sup>11</sup> Que cada alma desperte, cada coração se converta, e cada vida busque a preparação espiritual necessária.</span>
+<span class="verse"><sup>12</sup> Aceitem a Palavra, escutem a mensagem e coloquem em prática a santidade, para que no último culto possam estar prontos e firmes, enquanto o juízo recai sobre aqueles que rejeitam a graça e não se arrependem.</span>
+</p></div>`, 2: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 2</h2>
+<h3>A mensagem confrontante de renúncia e transformação</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, escutem com atenção: não se enganem, pois Deus exige transformação completa; a renúncia ao pecado não é opcional, é mandamento.</span>
+<span class="verse"><sup>2</sup> Quem vive em conforto espiritual e se recusa a confrontar seus erros está se preparando para receber juízo, e não graça.</span>
+<span class="verse"><sup>3</sup> Não permitam que o orgulho ou a preguiça conduzam suas almas à destruição; cada pensamento, palavra e ação deve ser submetido à vontade de Deus.</span>
+<span class="verse"><sup>4</sup> Renunciem às obras da carne, à mentira, à hipocrisia e à ambição; quem persiste em pecado deliberado desafia a misericórdia de Deus.</span>
+<span class="verse"><sup>5</sup> Quem escuta e não se arrepende está construindo seu próprio caminho de condenação; não haverá desculpas diante do trono do Senhor.</span>
+<span class="verse"><sup>6</sup> Toda alma que ama o mundo mais que Deus será confrontada, e nada ficará escondido quando a verdade se manifestar.</span>
+<span class="verse"><sup>7</sup> Não se deixem seduzir pelas filosofias humanas, pelos falsos mestres ou pelas modas do mundo; eles são veneno para a alma.</span>
+<span class="verse"><sup>8</sup> Cada cristão é chamado à santidade radical; quem adia arrependimento se engana, pensando que o tempo de Deus é infinito.</span>
+<span class="verse"><sup>9</sup> Arrependam-se agora, antes que o juízo chegue; cada dia de negligência aumenta a responsabilidade diante do Senhor.</span>
+<span class="verse"><sup>10</sup> Não tolerem idolatria, vaidade ou falsidade; o Evangelho exige sinceridade absoluta e submissão completa.</span>
+<span class="verse"><sup>11</sup> Quem abraça o pecado deliberado desafia a justiça de Deus e caminha para a separação eterna.</span>
+<span class="verse"><sup>12</sup> Guardem seus corações, observem suas atitudes e purifiquem suas intenções; Deus vê tudo e exige integridade.</span>
+<span class="verse"><sup>13</sup> Todo discípulo deve renunciar o eu, negar a si mesmo e seguir a Cristo sem reservas.</span>
+<span class="verse"><sup>14</sup> Quem se apega ao conforto da vida secular será rejeitado; a verdadeira fé exige coragem e compromisso total.</span>
+<span class="verse"><sup>15</sup> Não adiem arrependimento nem procrastinem transformação; o tempo do Senhor está próximo e não será tolerante com o descuido.</span>
+<span class="verse"><sup>16</sup> Cada passo em pecado deliberado é como caminhar sobre brasas; a misericórdia não é eterna para quem persiste.</span>
+<span class="verse"><sup>17</sup> Abandonem a incredulidade, a desobediência e a indiferença espiritual; essas atitudes conduzem à perdição.</span>
+<span class="verse"><sup>18</sup> Quem se recusa a renunciar seus erros está construindo sua própria ruína, ignorando o chamado à vida eterna.</span>
+<span class="verse"><sup>19</sup> A transformação exigida por Deus não é parcial, mas completa; cada hábito, cada desejo e cada atitude devem se submeter à vontade do Senhor.</span>
+<span class="verse"><sup>20</sup> Não sejam coniventes com o pecado nos outros; exijam retidão e santidade, começando por si mesmos.</span>
+<span class="verse"><sup>21</sup> Cada alma que escuta esta mensagem e obedece será fortalecida; cada uma que ignora o chamado se condena.</span>
+<span class="verse"><sup>22</sup> A verdadeira conversão exige ação: palavras vazias não salvam, e intenções não se traduzem em mudança real.</span>
+<span class="verse"><sup>23</sup> Não se enganem: Deus não será enganado; cada escolha será revelada, e cada coração exposto.</span>
+<span class="verse"><sup>24</sup> Quem renuncia e se transforma permanecerá firme; quem persiste no pecado será varrido como palha ao vento.</span>
+<span class="verse"><sup>25</sup> Não há desculpa para complacência; o Evangelho exige radicalidade e sinceridade total.</span>
+<span class="verse"><sup>26</sup> O tempo do Senhor é certo; quem não se arrepende sofrerá consequências imediatas e eternas.</span>
+<span class="verse"><sup>27</sup> Não há meio-termo na vida cristã; ou se vive em santidade ou se enfrenta o juízo.</span>
+<span class="verse"><sup>28</sup> Renunciem tudo que desagrada a Deus; a vida cristã não permite comodismo ou relativismo.</span>
+<span class="verse"><sup>29</sup> Cada decisão deve refletir submissão total a Cristo; o coração impenitente será destruído.</span>
+<span class="verse"><sup>30</sup> Escutem e ajam: não há atraso na justiça de Deus; cada momento perdido aproxima a condenação.</span>
+<span class="verse"><sup>31</sup> Que cada alma receba esta advertência como um chamado urgente à renúncia, arrependimento e transformação radical. Amém.</span>
+</p></div>` },
+  "5JP": { 1: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 1</h2>
+<h3>Saudações</h3>
+<p>
+<span class="verse"><sup>1</sup> João Pedro, servo indigno do Senhor Jesus Cristo, escreve com amor a todos os irmãos que buscam viver em comunhão e paz.</span>
+<span class="verse"><sup>2</sup> Que a graça do Pai os envolva, e que o Espírito Santo lhes conceda serenidade, esperança e direção em cada passo da jornada.</span>
+</p>
+<h3>A sabedoria divina transcende a sabedoria humana</h3>
+<p>
+<span class="verse"><sup>3</sup> Meus amados, a sabedoria de Deus é pura e perfeita; ela não pode ser medida pelos padrões humanos, pois vem do alto e guia os corações à verdade.</span>
+<span class="verse"><sup>4</sup> Enquanto a sabedoria terrena é limitada e instável, a sabedoria divina permanece firme e segura, trazendo paz àqueles que a recebem.</span>
+<span class="verse"><sup>5</sup> Quem confia apenas em sua própria razão acaba tropeçando, mas quem se deixa guiar pelo Espírito encontra caminhos de vida.</span>
+<span class="verse"><sup>6</sup> A sabedoria humana se orgulha do que sabe, mas a sabedoria de Deus revela humildade, pois nos ensina que tudo vem d’Ele.</span>
+<span class="verse"><sup>7</sup> O homem pode acumular muitos conhecimentos, mas sem a luz do Senhor, permanece vazio.</span>
+<span class="verse"><sup>8</sup> É o temor de Deus que abre a porta para o verdadeiro entendimento.</span>
+<span class="verse"><sup>9</sup> A sabedoria divina consola o aflito, orienta o incerto e fortalece o cansado.</span>
+<span class="verse"><sup>10</sup> Não rejeitem o conselho do Senhor, pois nele há vida e esperança.</span>
+<span class="verse"><sup>11</sup> O mundo passa, mas a palavra de Deus permanece, e quem nela se apoia nunca será confundido.</span>
+<span class="verse"><sup>12</sup> Portanto, abracem com doçura a sabedoria que vem do alto, e deixem que ela molde seus pensamentos, palavras e atitudes.</span>
+</p>
+<h3>O perigo do exclusivismo denominacional</h3>
+<p>
+<span class="verse"><sup>13</sup> Meus irmãos, lembrem-se: o Reino de Deus não é dividido por rótulos humanos, mas unido em Cristo Jesus.</span>
+<span class="verse"><sup>14</sup> Quando alguém exalta sua denominação acima do Evangelho, perde de vista o amor que deve unir todos os crentes.</span>
+<span class="verse"><sup>15</sup> O exclusivismo alimenta orgulho e separação, mas o amor gera comunhão e edificação mútua.</span>
+<span class="verse"><sup>16</sup> Não pensem que sua comunidade é melhor que outra; o corpo de Cristo é formado por muitos membros, e todos são preciosos.</span>
+<span class="verse"><sup>17</sup> Aquele que olha com desprezo para seu irmão não anda segundo o Espírito, mas segundo a carne.</span>
+<span class="verse"><sup>18</sup> A unidade não significa uniformidade, mas comunhão sincera em Cristo, acima de toda barreira humana.</span>
+<span class="verse"><sup>19</sup> Guardem-se do espírito sectário, pois ele enfraquece a obra de Deus; mas permaneçam em humildade, lembrando que todos fomos chamados para um só corpo e um só Senhor.</span>
+</p></div>`, 2: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 2</h2>
+<h3>O perigo da linguagem suja</h3>
+<p>
+<span class="verse"><sup>1</sup> As Escrituras afirmam que não podem sair de nossa boca nenhuma palavra torpe, nenhum murmúrio de maldade ou palavras que corrompam o coração do próximo.</span>
+<span class="verse"><sup>2</sup> Guardem suas línguas, pois cada palavra tem poder de edificar ou destruir; a boca de quem fala com reverência reflete a presença de Deus.</span>
+<span class="verse"><sup>3</sup> A língua do justo traz vida e sabedoria, mas a língua impura conduz à ruína e ao juízo.</span>
+<span class="verse"><sup>4</sup> Cuidado com piadas vulgares, fofocas ou insultos; tudo isso contamina o espírito e afasta a alma da santidade.</span>
+<span class="verse"><sup>5</sup> Cada palavra que sai de sua boca deve ser medida e guiada pelo amor e pelo temor do Senhor.</span>
+<span class="verse"><sup>6</sup> Não se deixem influenciar por conversas que promovam a maldade, o orgulho ou o desrespeito; permaneçam puros e vigilantes.</span>
+<span class="verse"><sup>7</sup> Ao falar, busquem sempre a verdade e a graça, edificando aqueles que ouvem e glorificando o Senhor em cada expressão.</span>
+<span class="verse"><sup>8</sup> O silêncio, quando necessário, é virtude; e a fala, quando usada com reverência, é instrumento de bênção.</span>
+<span class="verse"><sup>9</sup> Que suas palavras tragam paz, conforto e orientação, e não perturbação, discórdia ou escândalo.</span>
+<span class="verse"><sup>10</sup> Portanto, irmãos, vigiem sobre sua fala, lembrando que a santidade se reflete na forma como nos comunicamos.</span>
+<span class="verse"><sup>11</sup> Cada palavra impura deve ser substituída por louvor, oração e encorajamento.</span>
+<span class="verse"><sup>12</sup> Sejam exemplos de pureza na linguagem, para que outros vejam em suas palavras o caráter de Cristo.</span>
+<span class="verse"><sup>13</sup> Quem guarda a língua guarda o próprio coração, e quem guarda o coração honra a Deus.</span>
+<span class="verse"><sup>14</sup> Assim, o perigo da linguagem suja é vencido pelo temor de Deus e pela prática constante da virtude.</span>
+</p>
+<h3>A sensualidade no mundo atual</h3>
+<p>
+<span class="verse"><sup>15</sup> A sensualidade do mundo é enganosa; não se deixe seduzir por imagens, palavras ou pensamentos que estimulam desejos impuros.</span>
+<span class="verse"><sup>16</sup> Vocês devem guardar os olhos e o coração; tudo que é sensual, seja na realidade ou no pensamento, deve ser evitado.</span>
+<span class="verse"><sup>17</sup> Não contemplem o que provoca luxúria, e nem deem espaço ao pecado em pensamentos ou fantasias.</span>
+<span class="verse"><sup>18</sup> Cada desejo impuro que é alimentado torna o coração vulnerável à corrupção; afastem-se e mantenham a mente pura.</span>
+<span class="verse"><sup>19</sup> O corpo não deve ser transformado em ídolo; ele é templo do Espírito Santo e precisa ser preservado em santidade.</span>
+<span class="verse"><sup>20</sup> Cuidem de seus corpos com reverência e gratidão a Deus, lembrando que cada ação deve glorificá-Lo, evitando qualquer forma de impureza ou idolatria.</span>
+</p></div>`, 3: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 3</h2>
+<h3>A família é o presente de Deus</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, a família é um dom precioso do Senhor, uma bênção que deve ser valorizada e preservada com amor e respeito.</span>
+<span class="verse"><sup>2</sup> Cada pai, mãe e irmão tem um papel sagrado na vida de cada um; o cuidado mútuo e a bondade fortalecem o lar e refletem a presença de Deus.</span>
+<span class="verse"><sup>3</sup> Honrem seus pais e irmãos em todas as coisas, pois a harmonia familiar é fruto da obediência e do respeito aos princípios divinos.</span>
+<span class="verse"><sup>4</sup> O lar deve ser um lugar de paz, aprendizado e crescimento espiritual, onde todos se apoiam e edificam uns aos outros.</span>
+<span class="verse"><sup>5</sup> Ensinem seus filhos com paciência e dedicação, mostrando o caminho do Senhor por meio do exemplo e da palavra amorosa.</span>
+<span class="verse"><sup>6</sup> A família que busca a Deus permanece unida, e o amor que flui entre seus membros é reflexo do amor de Cristo.</span>
+<span class="verse"><sup>7</sup> Respeitem as diferenças entre os membros da família; cada um tem dons e responsabilidades que contribuem para o bem comum.</span>
+<span class="verse"><sup>8</sup> Protejam os laços familiares com atenção e cuidado, evitando desentendimentos que possam ferir o espírito do lar.</span>
+<span class="verse"><sup>9</sup> Assim, a família se torna um testemunho vivo da graça e do cuidado de Deus.</span>
+</p>
+<h3>Obedecer aos pais é obedecer a Deus</h3>
+<p>
+<span class="verse"><sup>10</sup> Filhos, lembrem-se: obedecer aos pais é obedecer a Deus; cada instrução recebida deve ser acolhida com respeito e atenção.</span>
+<span class="verse"><sup>11</sup> A desobediência aos pais abre caminho para erros e sofrimentos; o cuidado dos pais é sinal da providência divina em nossas vidas.</span>
+<span class="verse"><sup>12</sup> Ouçam os conselhos com humildade, valorizando a experiência e a sabedoria de quem lhes ama e deseja seu bem.</span>
+<span class="verse"><sup>13</sup> Não desprezem orientações, mesmo que pareçam rígidas; a obediência é caminho de crescimento e proteção.</span>
+<span class="verse"><sup>14</sup> Pais, instruam seus filhos com amor, paciência e coerência, mostrando o caminho da santidade e do temor a Deus.</span>
+<span class="verse"><sup>15</sup> Cada lar que pratica obediência e respeito floresce; cada gesto de amor reflete a presença divina.</span>
+<span class="verse"><sup>16</sup> Filhos desobedientes colocam suas vidas em risco de separação espiritual e emocional; a disciplina amorosa é um instrumento de cuidado.</span>
+<span class="verse"><sup>17</sup> Aprendam a escutar, compreender e seguir instruções, lembrando que Deus ordena respeito e reverência dentro da família.</span>
+<span class="verse"><sup>18</sup> Pais e filhos devem cultivar diálogo sincero, paciência e entendimento, evitando conflitos que enfraqueçam o vínculo familiar.</span>
+<span class="verse"><sup>19</sup> A família é escola de caráter; quem honra os pais aprende a honrar a Deus, e quem rejeita essa ordem enfrenta consequências para sua vida e seu espírito.</span>
+<span class="verse"><sup>20</sup> Cada gesto de respeito, cada palavra de amor e cada atitude de obediência é um ato de adoração a Deus.</span>
+<span class="verse"><sup>21</sup> Que todos compreendam que a obediência aos pais é caminho de bênção, proteção e crescimento espiritual.</span>
+<span class="verse"><sup>22</sup> Vivam com reverência, cuidando uns dos outros, e deixem que o amor e a obediência guiem cada dia de suas vidas familiares.</span>
+</p></div>`, 4: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 4</h2>
+<h3>O grande sacrifício que Cristo foi por nós</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus irmãos, reflitam sobre o grande amor de Cristo, que entregou Sua vida na cruz por cada um de nós, demonstrando misericórdia infinita e graça sem medida.</span>
+<span class="verse"><sup>2</sup> Ele suportou dores que nenhum coração humano poderia compreender, carregou nossos pecados e enfrentou a rejeição e a humilhação, para que pudéssemos ter vida plena.</span>
+<span class="verse"><sup>3</sup> O Evangelho que recebemos não é de conforto fácil, mas de cruz, renúncia e transformação; é chamado diário para seguir Jesus com fidelidade e amor.</span>
+<span class="verse"><sup>4</sup> Cada dia é oportunidade de tomar a própria cruz, abandonar o ego e as paixões, e caminhar com Cristo em obediência e humildade.</span>
+<span class="verse"><sup>5</sup> Lembrem-se do sofrimento, da traição, da dor física e emocional que Cristo suportou, sempre por amor à humanidade.</span>
+<span class="verse"><sup>6</sup> A coroa de espinhos, o peso da cruz, os açoites e a crucificação foram sinais do extremo sacrifício para nossa redenção; contemplem isso com reverência e gratidão.</span>
+<span class="verse"><sup>7</sup> O amor de Cristo é maior que todo entendimento; Sua entrega é exemplo de abnegação, humildade e fidelidade a Deus.</span>
+<span class="verse"><sup>8</sup> Seguir Jesus significa carregar o próprio fardo, aprender a amar os outros e renunciar tudo que nos afasta de Deus.</span>
+<span class="verse"><sup>9</sup> Cada gesto de bondade, cada sacrifício pessoal e cada escolha de renúncia reflete a presença do Evangelho em nossas vidas.</span>
+<span class="verse"><sup>10</sup> Não vivam apenas para si mesmos; o verdadeiro discipulado exige coração disposto, espírito aberto e vida transformada pela cruz.</span>
+<span class="verse"><sup>11</sup> A cruz de Cristo não foi apenas um símbolo, mas realidade de sofrimento e vitória; meditem sobre Sua Paixão diariamente.</span>
+<span class="verse"><sup>12</sup> Cada crente é chamado a viver na luz da ressurreição, mas jamais esquecendo do preço pago por nosso Salvador.</span>
+<span class="verse"><sup>13</sup> A renúncia não é perda, mas ganho; cada passo em obediência a Cristo produz frutos eternos no coração e na vida.</span>
+<span class="verse"><sup>14</sup> O Evangelho ensina que a vida é verdadeira quando vivida em amor, sacrifício e serviço aos outros, seguindo o exemplo de Jesus.</span>
+<span class="verse"><sup>15</sup> Que cada alma compreenda a profundidade da cruz e a extensão do amor divino; ela transforma, purifica e liberta.</span>
+<span class="verse"><sup>16</sup> Não ignorem a seriedade do chamado; cada dia é oportunidade de refletir a vida de Cristo em nossas atitudes.</span>
+<span class="verse"><sup>17</sup> A paixão de Jesus nos ensina sobre paciência, perdão e obediência; Seus sofrimentos foram pelos nossos pecados, e Sua vitória é nossa esperança.</span>
+<span class="verse"><sup>18</sup> Sigam com fé, tomando sua cruz diariamente, para que o amor de Cristo seja visível em cada palavra, gesto e pensamento.</span>
+<span class="verse"><sup>19</sup> Não se deixem abater pelo mundo; a cruz é pesada, mas a graça de Deus sustenta o fiel.</span>
+<span class="verse"><sup>20</sup> Cada ato de renúncia é luz no caminho do Evangelho; cada sacrifício feito com amor traz honra a Cristo.</span>
+<span class="verse"><sup>21</sup> Contemplem a entrega de Jesus e deixem que Sua vida, morte e ressurreição moldem o coração e transformem a alma.</span>
+<span class="verse"><sup>22</sup> Tomar a cruz diariamente não é sofrimento em vão; é oportunidade de seguir Jesus com fidelidade e esperança.</span>
+<span class="verse"><sup>23</sup> A morte de Cristo trouxe vida; Seu sangue derramado purifica, restaura e dá força para perseverar.</span>
+<span class="verse"><sup>24</sup> A Paixão de Cristo é exemplo supremo de amor; cada crente deve carregar o próprio fardo com coragem e humildade.</span>
+<span class="verse"><sup>25</sup> Sigam o caminho da cruz com devoção, lembrando que cada desafio é chance de crescer em santidade.</span>
+<span class="verse"><sup>26</sup> Que cada coração sinta gratidão, temor e alegria ao refletir sobre o sacrifício de Jesus, vivendo em resposta ao Seu amor.</span>
+<span class="verse"><sup>27</sup> A cruz de Cristo chama à transformação completa, ao abandono do pecado e à dedicação total a Deus.</span>
+<span class="verse"><sup>28</sup> Que toda vida seja oferecida em amor, serviço e obediência, reconhecendo que Cristo morreu por cada um de nós e vive em nós através do Espírito Santo.</span>
+</p></div>`,  5: `<!-- Gerado pelo Conversor USFM → HTML -->
+<div class="bible"><h2>Capítulo 5</h2>
+<h3>Compartilhar as coisas com os outros</h3>
+<p>
+<span class="verse"><sup>1</sup> Meus queridos, aprendam a compartilhar o que vocês têm com os outros; dar com alegria faz o coração crescer e agrada a Deus.</span>
+<span class="verse"><sup>2</sup> Não guardem para si mesmos tudo que recebem, pois o amor se multiplica quando dividimos e ajudamos quem precisa.</span>
+<span class="verse"><sup>3</sup> Cada gesto de bondade e generosidade é semente que cresce e dá frutos de alegria para todos.</span>
+<span class="verse"><sup>4</sup> Não fiquem tristes se alguém não retribuir, pois o importante é obedecer a Deus e fazer o bem.</span>
+<span class="verse"><sup>5</sup> Compartilhar não é apenas dar coisas materiais; é dar atenção, carinho, amizade e palavras de incentivo.</span>
+<span class="verse"><sup>6</sup> Quando ajudamos uns aos outros, aprendemos a viver em comunidade, e o coração se enche de felicidade.</span>
+<span class="verse"><sup>7</sup> Lembrem-se: cada ato de bondade é testemunho do amor de Jesus.</span>
+<span class="verse"><sup>8</sup> A generosidade deve ser constante, não apenas em dias especiais; ela transforma vidas, inclusive a sua própria.</span>
+<span class="verse"><sup>9</sup> Sejam pacientes e compreensivos, ajudando com alegria e sem esperar nada em troca.</span>
+<span class="verse"><sup>10</sup> Que cada criança entenda que o compartilhar é sinal de amor e respeito pelos outros.</span>
+<span class="verse"><sup>11</sup> Deus vê cada gesto e se alegra com corações que se doam em amor e serviço.</span>
+</p>
+<h3>O perigo das crianças agirem como pessoas adultas</h3>
+<p>
+<span class="verse"><sup>12</sup> Crianças, lembrem-se: ainda é tempo de brincar, aprender e crescer com alegria; não tentem agir como adultos antes da hora.</span>
+<span class="verse"><sup>13</sup> O coração infantil é precioso e deve ser cuidado; quem cresce cedo demais perde momentos importantes de aprendizado e inocência.</span>
+<span class="verse"><sup>14</sup> Aproveitem cada dia de infância, aprendendo, brincando e obedecendo aos pais, para que no futuro se tornem adultos sábios e gentis.</span>
+<span class="verse"><sup>15</sup> Não tentem assumir responsabilidades que ainda não podem compreender; Deus quer que cresçam passo a passo.</span>
+<span class="verse"><sup>16</sup> Obedecer e confiar nos pais ajuda a formar caráter e preparo para o futuro.</span>
+<span class="verse"><sup>17</sup> Cada criança deve respeitar limites e regras, sabendo que crescer com cuidado é um presente de Deus.</span>
+</p>
+<h3>Doxologia final</h3>
+<p>
+<span class="verse"><sup>18</sup> Que todos, crianças e adultos, recebam a bênção de Deus sobre suas vidas; que o amor de Jesus encha cada coração de alegria, paz e coragem.</span>
+<span class="verse"><sup>19</sup> Que o Senhor conduza cada um pelos caminhos da sabedoria e da bondade, protegendo e guiando com ternura e paciência.</span>
+<span class="verse"><sup>20</sup> Que a fé, a esperança e a alegria estejam sempre presentes, lembrando que Deus ama cada um de maneira única e perfeita.</span>
+<span class="verse"><sup>21</sup> A Ele seja toda honra, glória e louvor, agora e para sempre, pois Ele é fiel, bom e justo para todos os que O amam. Amém.</span>
+</p></div>`}
+};
+  // Funções para salvar e carregar marcadores
+function saveMarkers(book, chapter) {
+  const verses = document.querySelectorAll('#chapter .verse');
+  const marked = [];
+  verses.forEach((v, i) => { if (v.classList.contains('marked')) marked.push(i); });
+  localStorage.setItem(`markers-${book}-${chapter}`, JSON.stringify(marked));
+}
+
+function loadMarkers(book, chapter) {
+  const marked = JSON.parse(localStorage.getItem(`markers-${book}-${chapter}`) || "[]");
+  const verses = document.querySelectorAll('#chapter .verse');
+  verses.forEach((v, i) => { if (marked.includes(i)) v.classList.add('marked'); });
+}
+
+// Atualiza a lista de capítulos
+document.getElementById('bookSelect').addEventListener('change', function() {
+  const book = this.value;
+  const chapterSelect = document.getElementById('chapterSelect');
+  chapterSelect.innerHTML = '<option value="">-- Selecione um capítulo --</option>';
+  if (chapters[book]) {
+    Object.keys(chapters[book]).forEach(ch => {
+      const option = document.createElement('option');
+      option.value = ch;
+      option.text = ch;
+      chapterSelect.appendChild(option);
+    });
+  }
+});
+
+// Exibe capítulo e muda para layout2
+function showChapter() {
+  const book = document.getElementById('bookSelect').value;
+  const chapter = document.getElementById('chapterSelect').value;
+  if (book && chapter && chapters[book][chapter] !== undefined) {
+    const container = document.getElementById('chapter');
+    container.innerHTML = chapters[book][chapter];
+
+    const verses = container.querySelectorAll('.verse');
+    verses.forEach(v => {
+      v.addEventListener('click', () => {
+        v.classList.toggle('marked');
+        saveMarkers(book, chapter);
+      });
+    });
+
+    loadMarkers(book, chapter);
+
+    document.getElementById('layout1').style.display = 'none';
+    document.getElementById('layout2').style.display = 'flex';
+  } else {
+    alert("Selecione um livro e capítulo válidos.");
+  }
+}
+
+// Volta para layout1
+function goBack() {
+  document.getElementById('layout2').style.display = 'none';
+  document.getElementById('layout1').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+  
